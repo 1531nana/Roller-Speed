@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Servicios {
 
 @GetMapping
-    public String servicios() {
+    public String Servicios() {
         
         return "servicios"; 
     }
