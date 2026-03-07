@@ -201,8 +201,8 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <!-- Navigation (rendered by Thymeleaf; make sure page is served through Spring) -->
+    <div th:replace="fragments/navbar :: navbar"></div>
 
     <!-- Hero Section -->
     <section class="hero">
