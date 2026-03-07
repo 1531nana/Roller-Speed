@@ -1,10 +1,12 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visión - Roller Speed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
     <style>
         :root {
             --primary-color: #004a87; /* Azul institucional */
@@ -57,31 +59,8 @@
     </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Roller Speed</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/mision">Misión</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/vision">Visión</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/valores">Valores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/servicios">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/eventos">Eventos</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <header class="hero-section">
-        <div class="container">
-            <h1 class="display-4 fw-bold">Nuestra Visión</h1>
-            <p class="lead">Hacia el futuro del patinaje en Santa Marta</p>
-        </div>
-    </header>
+    <!-- Navigation -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
 
     <main class="container my-5">
         <div class="row justify-content-center">
@@ -117,12 +96,8 @@
         </div>
     </main>
 
-    <footer class="text-center">
-        <div class="container">
-            <p>&copy; 2026 Escuela de Patinaje Roller Speed - Santa Marta, Colombia</p>
-            <small>Proyecto Académico IU Digital de Antioquia</small>
-        </div>
-    </footer>
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
