@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"
+    />
+    <title>Misión - Escuela de patinaje</title>
+    <style>
+        /* estilos sencillos adicionales */
+        .mission-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .mission-quote {
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid #00a1df;
+            padding-left: 1rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- navbar común -->
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<!-- contenido principal -->
+<div class="container mt-5">
+    <h1 class="mb-4">Misión</h1>
+
+    <p class="mission-text">
+        Proporcionar una formación completa en el patinaje que contribuya al desarrollo físico,
+        académico y humano de nuestros participantes. Nos comprometemos a crear un ambiente
+        seguro y motivador en el que cada persona pueda descubrir su potencial, fortaleciendo
+        valores como la disciplina, el respeto y el trabajo en equipo.
+    </p>
+
+    <div class="mission-quote">
+        “Fomentamos el equilibrio entre cuerpo y mente a través del deporte para construir
+        ciudadanos responsables y apasionados por el patinaje.”
+    </div>
+
+    <ul class="list-group mt-4">
+        <li class="list-group-item"><strong>Inclusión:</strong> abiertos a todas las edades y
+            capacidades.</li>
+        <li class="list-group-item"><strong>Calidad:</strong> entrenamiento con instructores
+            certificados.</li>
+        <li class="list-group-item"><strong>Seguridad:</strong> instalaciones y equipos adecuados
+            para cada nivel.</li>
+    </ul>
+</div>
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"
+></script>
+</body>
+</html>
