@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escuela de Patinaje Roller Speed</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #004a87;
@@ -88,12 +91,13 @@
 </head>
 <body>
 
-    <header>
-        <h1>Institución Universitaria Digital de Antioquia-Frameworks</h1>
-        <p>Proyecto: Escuela de Patinaje Roller Speed</p>
-    </header>
+    <!-- Navigation -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
 
     <div class="container">
+
+        <h1 class="display-4 fw-bold">Nuestros servicios</h1>
+
         <section id="proposito">
             <p>Entendemos que la diversión, la disciplina y el crecimiento van de la mano; queremos fomentar la estimulación motora y capacidades coordinativas en todos nuestros patinadores</p>
         </section>
@@ -131,15 +135,9 @@
         </section>
     </div>
 
-    <footer>
-        <p>&copy; 2026 IU Digital de Antioquia - Facultad de Ingeniería y Ciencias Agropecuarias-Frameworks</p>
-        <p class="fuente-imagen">
-            Imagen de fondo tomada de: 
-            <a href="https://www.saludclub.co/wp-content/uploads/2019/01/ACADEMIA-DE-PATINAJE-SALUDCLUB-SALITRE-PARA-NI%C3%91OS-Y-ADULTOS-2019.png" target="_blank">
-                https://www.saludclub.co/cursos-y-clases-de-patinaje-para-ninos-y-adultos/
-            </a>
-        </p>
-    </footer>
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
