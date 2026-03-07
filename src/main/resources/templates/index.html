@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roller Speed - Escuela de Patinaje</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #004a87;
+            --secondary: #00a1df;
+            --dark: #1a1a1a;
+            --light: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,74,135,0.8), rgba(0,161,223,0.8)), 
+                        url('/images/patinaje-background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn-custom {
+            background: var(--secondary);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            color: white;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .btn-custom:hover {
+            background: #0088cc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,161,223,0.3);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-alt {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            height: 100%;
+            border-top: 4px solid var(--secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto hero-content">
+                    <h1><i class="fas fa-skating"></i> Roller Speed</h1>
+                    <p class="lead">La mejor escuela de patinaje donde la diversión, la disciplina y el crecimiento van de la mano</p>
+                    <div class="mt-4">
+                        <a href="#servicios" class="btn-custom">Nuestros Servicios</a>
+                        <a href="#contacto" class="btn-outline-custom">Contáctanos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="servicios">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegir Roller Speed?</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-users feature-icon"></i>
+                        <h3>Instructores Certificados</h3>
+                        <p>Contamos con un equipo de instructores altamente capacitados y certificados que te guiarán en cada paso de tu aprendizaje.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-heart feature-icon"></i>
+                        <h3>Desarrollo Integral</h3>
+                        <p>Fomentamos la estimulación motora y capacidades coordinativas mientras desarrollamos valores de disciplina y perseverancia.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-child feature-icon"></i>
+                        <h3>Para Todas las Edades</h3>
+                        <p>Programas especializados desde niños hasta adultos, adaptados a cada nivel de experiencia y edad.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-medal feature-icon"></i>
+                        <h3>Competencias</h3>
+                        <p>Preparamos a nuestros estudiantes para competencias locales y nacionales, desarrollando el espíritu competitivo.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-clock feature-icon"></i>
+                        <h3>Horarios Flexibles</h3>
+                        <p>Ofrecemos múltiples horarios para adaptarnos a tu estilo de vida, incluyendo clases matutinas, vespertinas y fines de semana.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h3>Seguridad Primero</h3>
+                        <p>Instalaciones seguras y equipos de protección de alta calidad para garantizar un aprendizaje sin riesgos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Estudiantes Activos</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Instructores Certificados</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Años de Experiencia</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Satisfacción</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Beneficios del Patinaje</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <i class="fas fa-dumbbell text-primary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5>Fortalecimiento Muscular</h5>
+                                    <p>Desarrollo de fuerza en piernas, glúteos y core.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <i class="fas fa-balance-scale text-primary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5>Mejora del Equilibrio</h5>
+                                    <p>Desarrollo de habilidades de coordinación y estabilidad.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <i class="fas fa-heartbeat text-primary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5>Salud Cardiovascular</h5>
+                                    <p>Excelente ejercicio aeróbico para el corazón.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <i class="fas fa-smile text-primary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5>Bienestar Mental</h5>
+                                    <p>Libera endorfinas y reduce el estrés.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img th:src="@{/images/patinaje-background.png}" 
+                         alt="Beneficios del patinaje" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>¿Listo para empezar tu aventura sobre ruedas?</h2>
+                    <p>Únete a nuestra familia de patinadores y descubre todo tu potencial</p>
+                    <a href="tel:+57123456789" class="btn-custom me-3">
+                        <i class="fas fa-phone me-2"></i>Llámanos
+                    </a>
+                    <a href="mailto:info@rollerspeed.com" class="btn-outline-custom">
+                        <i class="fas fa-envelope me-2"></i>Escríbenos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <h5><i class="fas fa-skating me-2"></i>Roller Speed</h5>
+                    <p>Escuela de patinaje donde la pasión por rodar se convierte en excelencia.</p>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-phone me-2"></i>+57 123 456 789</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@rollerspeed.com</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Medellín, Colombia</p>
+                </div>
+                <div class="col-lg-4 mb-3">
+                    <h5>Síguenos</h5>
+                    <div>
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Roller Speed. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p>Proyecto: Institución Universitaria Digital de Antioquia - Frameworks</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
