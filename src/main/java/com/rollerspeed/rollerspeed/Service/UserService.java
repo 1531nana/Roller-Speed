@@ -2,23 +2,18 @@ package com.rollerspeed.rollerspeed.Service;
 
 import java.util.List;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties.Apiversion.Use;
+import org.springframework.stereotype.Service;
 
 import com.rollerspeed.rollerspeed.Model.UserModel;
 import com.rollerspeed.rollerspeed.Repository.UserRepository;
 
+@Service
 public class UserService {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public List<UserModel> getAllusers() {
+    public List<UserModel> getAllUsers() {
         return userRepository.findAll();
-        
     }
 }
