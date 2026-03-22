@@ -14,17 +14,13 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_email", length = 100, nullable = false, unique = true)
-    private String email;
-
-    @Column(name = "user_password", length = 20, nullable = false)
-    private String password;
-
-    @Column(name = "user_name", length = 30, nullable = false, unique = true)
+    @Column(name = "user_name", length = 40, nullable = false, unique = true)
     private String username;
 
-}
+    @Column(name = "email", length = 20, nullable = false, unique = true)
+    private String email;
 
-    
-    
+    @Column(name = "password", length = 60, nullable = false)
+    private String password;
+
 }
