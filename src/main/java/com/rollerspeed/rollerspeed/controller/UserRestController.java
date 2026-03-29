@@ -18,4 +18,13 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserRestController {
 
+    @Autowired
+    private UserService userService;
+
+    @GetMapping
+    @Operation(summary = "Listar todos los usuarios", description = "Devuelve una lista con todos los usuarios registrados en el sistema")
+    @ApiResponse(responseCode = "200", description = "Lista obtenida con exito")
+    public List<UserModel> getAllUsers() {
+        return userService.getAllUsers();
+    }
 }
