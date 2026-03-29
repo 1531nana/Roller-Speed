@@ -28,3 +28,24 @@ public class UserRestController {
         return userService.getAllUsers();
     }
 }
+
+@PutMapping("/{id}")
+@Operation(
+    summary = "Actualizar un usuario existente",
+    description = "Recibe un JSON con los nuevos datos y actualiza el usuario indicado por ID"
+)
+@ApiResponse(responseCode = "200", description = "Usuario actualizado correctamente")
+@ApiResponse(responseCode = "400", description = "Datos inválidos")
+@ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+public ResponseEntity<?> updateUser(
+        @Parameter(description = "ID del usuario a actualizar")
+        @PathVariable Long id,
+        @RequestBody UserModel userDetails) {
+
+    try {
+        UserModel updated = userService.updateUser(id, userDetails);
+        return ResponseEntity.ok(updated);
+    } catch (IllegalArgumentException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+}
