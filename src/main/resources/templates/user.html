@@ -117,7 +117,8 @@
                                 <th>ID</th>
                                 <th>Usuario</th>
                                 <th>Correo</th>
-                                <th>Contrasena</th>
+                                <th>Contraseña</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -126,6 +127,20 @@
                                 <td th:text="${usuario.username}"></td>
                                 <td th:text="${usuario.email}"></td>
                                 <td th:text="${usuario.password}"></td>
+                                <td>
+                                    <a th:href="@{/users/{id}(id=${usuario.id})}" class="btn btn-sm btn-info me-1">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a th:href="@{/users/edit/{id}(id=${usuario.id})}" class="btn btn-sm btn-warning me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form th:action="@{/users/delete/{id}(id=${usuario.id})}" method="post" class="d-inline"
+                                          onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

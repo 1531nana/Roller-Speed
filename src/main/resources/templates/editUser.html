@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roller Speed - Editar Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #004a87;
+            --secondary: #00a1df;
+            --dark: #1a1a1a;
+            --light: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, rgba(0,74,135,0.92), rgba(0,161,223,0.88));
+            color: white;
+            padding: 70px 0 50px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.35);
+        }
+
+        .page-header p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .section {
+            padding: 60px 0 80px;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--secondary);
+            padding: 2rem 2.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.2rem rgba(0,161,223,0.25);
+        }
+
+        .btn-primary-custom {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 0.6rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.6rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            background: transparent;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.1rem; }
+            .form-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <header class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-user-edit me-2"></i>Editar Usuario</h1>
+            <p>Modifica los datos del usuario</p>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="form-card">
+                        <form th:action="@{/users/edit/{id}(id=${usuario.id})}" th:object="${usuario}" method="post">
+
+                            <div class="mb-4">
+                                <label for="username" class="form-label">
+                                    <i class="fas fa-user me-1"></i> Nombre de usuario
+                                </label>
+                                <input type="text"
+                                       id="username"
+                                       th:field="*{username}"
+                                       class="form-control"
+                                       maxlength="30"
+                                       required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="email" class="form-label">
+                                    <i class="fas fa-envelope me-1"></i> Correo electrónico
+                                </label>
+                                <input type="email"
+                                       id="email"
+                                       th:field="*{email}"
+                                       class="form-control"
+                                       maxlength="100"
+                                       required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="password" class="form-label">
+                                    <i class="fas fa-lock me-1"></i> Contraseña
+                                </label>
+                                <input type="password"
+                                       id="password"
+                                       th:field="*{password}"
+                                       class="form-control"
+                                       maxlength="20"
+                                       required>
+                            </div>
+
+                            <div class="d-flex gap-3 mt-4">
+                                <button type="submit" class="btn btn-primary-custom">
+                                    <i class="fas fa-save me-1"></i> Guardar cambios
+                                </button>
+                                <a th:href="@{/users/list}" class="btn btn-outline-custom">
+                                    <i class="fas fa-arrow-left me-1"></i> Cancelar
+                                </a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

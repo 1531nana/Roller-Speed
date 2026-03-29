@@ -17,10 +17,10 @@ public class UserModel {
     @Column(name = "user_name", length = 40, nullable = false, unique = true)
     private String username;
 
-    @Column(name = "email", length = 20, nullable = false, unique = true)
+    @Column(name = "user_email", length = 100, nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password", length = 60, nullable = false)
+    @Column(name = "user_password", length = 20, nullable = false)
     private String password;
 
 }
