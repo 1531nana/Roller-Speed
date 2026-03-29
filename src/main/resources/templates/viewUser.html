@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roller Speed - Ver Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #004a87;
+            --secondary: #00a1df;
+            --dark: #1a1a1a;
+            --light: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, rgba(0,74,135,0.92), rgba(0,161,223,0.88));
+            color: white;
+            padding: 70px 0 50px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.35);
+        }
+
+        .page-header p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .section {
+            padding: 60px 0 80px;
+        }
+
+        .detail-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--secondary);
+            padding: 2rem 2.5rem;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            color: #333;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .btn-primary-custom {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 0.6rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.6rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            background: transparent;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.1rem; }
+            .detail-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <header class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-user me-2"></i>Detalle de Usuario</h1>
+            <p>Información del usuario registrado</p>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="detail-card">
+
+                        <div class="mb-3">
+                            <div class="detail-label"><i class="fas fa-hashtag me-1"></i> ID</div>
+                            <div class="detail-value" th:text="${usuario.id}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="detail-label"><i class="fas fa-user me-1"></i> Nombre de usuario</div>
+                            <div class="detail-value" th:text="${usuario.username}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="detail-label"><i class="fas fa-envelope me-1"></i> Correo electrónico</div>
+                            <div class="detail-value" th:text="${usuario.email}"></div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="detail-label"><i class="fas fa-lock me-1"></i> Contraseña</div>
+                            <div class="detail-value" th:text="${usuario.password}"></div>
+                        </div>
+
+                        <div class="d-flex gap-3 mt-4">
+                            <a th:href="@{/users/edit/{id}(id=${usuario.id})}" class="btn btn-primary-custom">
+                                <i class="fas fa-edit me-1"></i> Editar
+                            </a>
+                            <a th:href="@{/users/list}" class="btn btn-outline-custom">
+                                <i class="fas fa-arrow-left me-1"></i> Volver
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

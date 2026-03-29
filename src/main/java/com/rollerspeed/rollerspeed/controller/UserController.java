@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -32,6 +33,34 @@ public class UserController {
     @PostMapping("/add")
     public String addUser(@ModelAttribute("nuevoUsuario") UserModel user) {
         userService.saveUser(user);
+        return "redirect:/users/list";
+    }
+
+    @GetMapping("/{id}")
+    public String getUserById(@PathVariable Long id, Model model) {
+        UserModel usuario = userService.getUserById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con id: " + id));
+        model.addAttribute("usuario", usuario);
+        return "viewUser";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditUserForm(@PathVariable Long id, Model model) {
+        UserModel usuario = userService.getUserById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con id: " + id));
+        model.addAttribute("usuario", usuario);
+        return "editUser";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateUser(@PathVariable Long id, @ModelAttribute("usuario") UserModel userDetails) {
+        userService.updateUser(id, userDetails);
+        return "redirect:/users/list";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
         return "redirect:/users/list";
     }
 }
