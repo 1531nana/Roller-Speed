@@ -23,9 +23,13 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public UserModel saveUser(UserModel user) {
-        validateUser(user);
-        return userRepository.save(user);
+    public UserModel saveUser(UserModel user) throws Exception {
+        try{
+            validateUser(user);
+            return userRepository.save(user);
+        }catch(Exception e){
+            throw new Exception(e);
+        }
     }
 
     public UserModel updateUser(Long id, UserModel userDetails) {

@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public String addUser(@ModelAttribute("nuevoUsuario") UserModel user) {
+    public String addUser(@ModelAttribute("nuevoUsuario") UserModel user) throws Exception {
         userService.saveUser(user);
         return "redirect:/users/list";
     }
