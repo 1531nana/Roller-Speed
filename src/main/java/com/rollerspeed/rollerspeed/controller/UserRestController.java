@@ -28,3 +28,17 @@ public class UserRestController {
         return userService.getAllUsers();
     }
 }
+  @DeleteMapping("/{id}") 
+    @Operation(summary = "Eliminar un usuario", description = "Elimina del sistema el usuario con el ID indicado") 
+    @ApiResponse(responseCode = "204", description = "Usuario eliminado correctamente") 
+    @ApiResponse(responseCode = "404", description = "Usuario no encontrado") 
+    public ResponseEntity<?> deleteUser( 
+            @Parameter(description = "ID del usuario a eliminar") 
+@PathVariable Long id) { 
+        try { 
+            userService.deleteUser(id); 
+return ResponseEntity.noContent().build(); 
+} catch (IllegalArgumentException e) { 
+return ResponseEntity.notFound().build(); 
+} 
+}
